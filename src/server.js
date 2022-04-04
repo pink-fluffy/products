@@ -20,6 +20,7 @@ app.get('/', function (req, res, next) {
 	res.send('Unicorn Store Identity Microservice REST API');
 });
 app.post(`/${apiRoot}/add`, makeExpressCallback(productController.postProduct));
+app.get(`/${apiRoot}/getAll`, makeExpressCallback(productController.getAllProducts));
 
 // Get port from environment and store in Express.
 var port = normalizePort(process.env.PORT || '3000');
