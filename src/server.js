@@ -24,14 +24,14 @@ app.post(`/${apiRoot}/add`, auth, makeExpressCallback(productController.postProd
 app.get(`/${apiRoot}/getAll`, auth, makeExpressCallback(productController.getAllProducts));
 
 // Get port from environment and store in Express.
-var port = normalizePort(process.env.PORT || '4000');
+var port = normalizePort(process.env.PORT);
 app.set('port', port);
 
 // Create HTTP server.
 var server = http.createServer(app);
 
 // Listen on provided port, on all network interfaces.
-server.listen(port);
+server.listen(port, '0.0.0.0');
 server.on('listening', onListening);
 
 /**

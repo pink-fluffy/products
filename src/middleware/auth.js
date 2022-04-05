@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
 	}
 	const token = req.headers.authorization.split(' ')[1];
 	axios
-		.post('http://localhost:3000/user/auth', {
+		.post(`http://${config.IDENTITY_HOST}/user/auth`, {
 			token: token
 		})
 		.then((res) => {
