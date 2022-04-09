@@ -3,7 +3,8 @@ export default function makeProductsDb({ makeDb, productModel }) {
 		findById,
 		insert,
 		findDuplicate,
-		getAll
+		findAll,
+		filter
 	});
 
 	async function insert(product) {
@@ -32,10 +33,16 @@ export default function makeProductsDb({ makeDb, productModel }) {
 		return result;
 	}
 
-	async function getAll() {
+	async function findAll() {
 		const db = await makeDb();
 
 		const result = productModel.find({});
+		return result;
+	}
+
+	async function filter(query) {
+		const db = await makeDb();
+		const result = await productModel.find(query);
 		return result;
 	}
 }

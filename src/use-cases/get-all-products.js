@@ -5,6 +5,6 @@
  */
 export default function makeGetAllProducts(productsDb) {
 	return async function getAllProducts() {
-		return productsDb.getAll();
+		return productsDb.findAll();
 	};
 }

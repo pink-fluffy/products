@@ -1,6 +1,7 @@
 import enums from '../enums';
 export default function makeAddProduct({ productService, ProductInfo, ServiceResponse, ServiceData }) {
-	return async function addProduct(body) {
+	return async function addProduct(req) {
+		const body = req.body;
 		const response = new ServiceResponse();
 		try {
 			const { name, category, brand, description, price, stock } = body;

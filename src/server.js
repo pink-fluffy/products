@@ -22,6 +22,7 @@ app.get('/', auth, function (req, res, next) {
 });
 app.post(`/${apiRoot}/add`, auth, makeExpressCallback(productController.postProduct));
 app.get(`/${apiRoot}/getAll`, auth, makeExpressCallback(productController.getAllProducts));
+app.get(`/${apiRoot}`, makeExpressCallback(productController.filterProducts));
 
 // Get port from environment and store in Express.
 var port = normalizePort(process.env.PORT);

@@ -4,8 +4,8 @@ export default function makeGetAllProducts({ productService, ProductInfo, Servic
 		const response = new ServiceResponse();
 		try {
 			const products = await getAll();
-			const resBody = new ServiceData(products.data, enums.REASON_PHRASES.CREATED);
-			const status = enums.STATUS_CODES.CREATED;
+			const resBody = new ServiceData(products.data, enums.REASON_PHRASES.OK);
+			const status = enums.STATUS_CODES.OK;
 			response.body = resBody;
 			response.status = status;
 		} catch (err) {
