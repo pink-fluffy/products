@@ -3,9 +3,9 @@
  * @param {*} productsDb
  * @returns
  */
-export default function makeFilterProducts(productsDb) {
+export default function makeFilterProducts(productsDb, validate) {
 	return async function filterProducts(query) {
-		// TODO validate query object
+		validate(query);
 		return productsDb.filter(query);
 	};
 }

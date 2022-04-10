@@ -1,4 +1,5 @@
 import makeAddProduct from './add-product';
+import { validateQuery } from '../product';
 import ProductInfo from './product-info';
 import { ServiceResponse, ServiceData } from './service-response';
 import productsDb from '../data-access';
@@ -7,7 +8,7 @@ import makeFilterProducts from './filter-products';
 
 const addProduct = makeAddProduct(productsDb);
 const getAllProducts = makeGetAllProducts(productsDb);
-const filterProducts = makeFilterProducts(productsDb);
+const filterProducts = makeFilterProducts(productsDb, validateQuery);
 
 const productService = Object.freeze({
 	add: addProduct,

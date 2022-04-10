@@ -1,4 +1,4 @@
-export default function buildMakeProduct({ validator, Id }) {
+export default function buildMakeProduct({ validate, Id }) {
 	return function makeProduct({
 		id = Id(),
 		name,
@@ -11,9 +11,7 @@ export default function buildMakeProduct({ validator, Id }) {
 		created_at = Date.now(),
 		updated_at = Date.now()
 	} = {}) {
-		let error = validator({ id, name, category, brand, description, price, stock });
-		if (error.status != 200) throw error;
-
+		validate({ id, name, category, brand, description, price, stock });
 		return Object.freeze({
 			getId: () => id,
 			getName: () => name,
