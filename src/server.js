@@ -6,7 +6,6 @@ import path from 'path';
 import makeExpressCallback from './express';
 import productController from './controllers';
 import http from 'http';
-import auth from './middleware/auth';
 
 dotenv.config();
 
@@ -17,36 +16,23 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', auth, function (req, res, next) {
+app.get('/', function (req, res, next) {
 	res.send('Unicorn Store Products Microservice REST API');
 });
-app.post(`/${apiRoot}/add`, auth, makeExpressCallback(productController.postProduct));
-app.get(`/${apiRoot}/getAll`, auth, makeExpressCallback(productController.getAllProducts));
-app.get(`/${apiRoot}`, auth, makeExpressCallback(productController.filterProducts));
+app.post(`/${apiRoot}/add`, makeExpressCallback(productController.postProduct));
+app.get(`/${apiRoot}/getAll`, makeExpressCallback(productController.getAllProducts));
+app.get(`/${apiRoot}`, makeExpressCallback(productController.filterProducts));
+app.get(`/${apiRoot}/:id`, makeExpressCallback(productController.getProduct));
 
 // Get port from environment and store in Express.
-var port = normalizePort(process.env.PORT);
-app.set('port', port);
+app.set('port', process.env.PORT);
 
 // Create HTTP server.
 var server = http.createServer(app);
 
 // Listen on provided port, on all network interfaces.
-server.listen(port, '0.0.0.0');
+server.listen(process.env.PORT, '0.0.0.0');
 server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-function normalizePort(val) {
-	var port = parseInt(val, 10);
-	// named pipe
-	if (isNaN(port)) return val;
-	// port number
-	if (port >= 0) return port;
-
-	return false;
-}
 
 /**
  * Event listener for HTTP server "listening" event.

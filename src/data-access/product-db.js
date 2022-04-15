@@ -1,6 +1,6 @@
 export default function makeProductsDb({ makeDb, productModel }) {
 	return Object.freeze({
-		findById,
+		findByShortId,
 		insert,
 		findDuplicate,
 		findAll,
@@ -13,7 +13,7 @@ export default function makeProductsDb({ makeDb, productModel }) {
 		return result;
 	}
 
-	async function findById(id) {
+	async function findByShortId(id) {
 		const db = await makeDb();
 		const result = await productModel.findOne({ short_id: id });
 		return result;
