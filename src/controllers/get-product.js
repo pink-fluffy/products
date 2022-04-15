@@ -23,11 +23,12 @@ export default function makeGetProduct({ productService, ProductInfo, ServiceRes
 	 */
 	async function get(id) {
 		const product = await productService.get(id);
+		var data;
 		if (!product) {
 			throw { status: enums.STATUS_CODES.NOT_FOUND, message: enums.REASON_PHRASES.NOT_FOUND };
+		} else {
+			data = new ProductInfo(product);
 		}
-		const data = new ProductInfo(product);
-
 		return { data };
 	}
 }

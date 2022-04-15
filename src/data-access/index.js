@@ -6,7 +6,7 @@ import productModel from './product-model';
  * make db
  */
 export async function makeDb() {
-	const URI = process.env.MONGODB_URI;
+	const URI = process.env.PRODUCTS_MONGODB_URI;
 	const options = {
 		useNewUrlParser: true,
 		useUnifiedTopology: true
