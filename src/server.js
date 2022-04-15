@@ -25,13 +25,14 @@ app.get(`/${apiRoot}`, makeExpressCallback(productController.filterProducts));
 app.get(`/${apiRoot}/:id`, makeExpressCallback(productController.getProduct));
 
 // Get port from environment and store in Express.
-app.set('port', process.env.PRODUCTS_PORT);
+var port = process.env.PRODUCTS_PORT;
+app.set('port', port);
 
 // Create HTTP server.
 var server = http.createServer(app);
 
 // Listen on provided port, on all network interfaces.
-server.listen(process.env.PORT, '0.0.0.0');
+server.listen(port, '0.0.0.0');
 server.on('listening', onListening);
 
 /**
