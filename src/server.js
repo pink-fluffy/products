@@ -9,7 +9,7 @@ import http from 'http';
 
 dotenv.config();
 
-const apiRoot = process.env.API_ROOT;
+const apiRoot = process.env.PRODUCTS_API_ROOT;
 const app = express();
 
 app.use(logger('dev'));
@@ -25,7 +25,7 @@ app.get(`/${apiRoot}`, makeExpressCallback(productController.filterProducts));
 app.get(`/${apiRoot}/:id`, makeExpressCallback(productController.getProduct));
 
 // Get port from environment and store in Express.
-app.set('port', process.env.PORT);
+app.set('port', process.env.PRODUCTS_PORT);
 
 // Create HTTP server.
 var server = http.createServer(app);
