@@ -5,6 +5,7 @@ export default class ProductInfo {
 		this.category = product.category;
 		this.brand = product.brand;
 		this.description = product.description;
+		this.image = product.image;
 		this.price = product.price;
 		this.stock = product.stock;
 	}

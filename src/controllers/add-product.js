@@ -4,10 +4,10 @@ export default function makeAddProduct({ productService, ProductInfo, ServiceRes
 		const body = req.body;
 		const response = new ServiceResponse();
 		try {
-			const { name, category, brand, description, price, stock } = body;
-			if (!(name && category && brand && description && price && stock))
+			const { name, category, brand, description, image, price, stock } = body;
+			if (!(name && category && brand && description && image && price && stock))
 				throw { status: enums.ERRORS.INVALID_INPUT.status, message: enums.ERRORS.INVALID_INPUT.message };
-			const created = await add(name, category, brand, description, price, stock);
+			const created = await add(name, category, brand, description, image, price, stock);
 			const resBody = new ServiceData(created.data, enums.REASON_PHRASES.CREATED);
 			const status = enums.STATUS_CODES.CREATED;
 			response.body = resBody;
@@ -30,12 +30,13 @@ export default function makeAddProduct({ productService, ProductInfo, ServiceRes
 	 * @param {String} price
 	 * @param {String} stock
 	 */
-	async function add(name, category, brand, description, price, stock) {
+	async function add(name, category, brand, description, image, price, stock) {
 		const productInfo = {
 			name: name,
 			category: category,
 			brand: brand,
 			description: description,
+			image: image,
 			price: price,
 			stock: stock
 		};

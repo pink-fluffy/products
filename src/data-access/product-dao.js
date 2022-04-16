@@ -7,6 +7,7 @@ class ProductDAO {
 			category: product.category,
 			brand: product.brand,
 			description: product.description,
+			image: product.image,
 			price: product.price,
 			stock: product.stock,
 			created_at: product.created_at,

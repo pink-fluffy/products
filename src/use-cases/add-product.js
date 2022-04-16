@@ -27,6 +27,7 @@ export default function makeAddProduct(productsDb) {
 			category: product.getCategory(),
 			brand: product.getBrand(),
 			description: product.getDescription(),
+			image: product.getImage(),
 			price: product.getPrice(),
 			stock: product.getStock()
 		});

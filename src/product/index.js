@@ -3,7 +3,7 @@ import validator from './validator';
 import Id from '../id';
 
 const validateProduct = validator.validateProduct;
-const makeProduct = buildMakeProduct({ validateProduct, Id });
+const makeProduct = buildMakeProduct(validateProduct, Id);
 
 export default makeProduct;
 

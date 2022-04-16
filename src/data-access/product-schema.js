@@ -11,12 +11,12 @@ const schema = new mongoose.Schema(
 		},
 		category: {
 			type: String,
-			enum: Object.values(enums.CATEGORY),
+			enum: enums.CATEGORY,
 			required: true
 		},
 		brand: {
 			type: String,
-			enum: Object.values(enums.BRAND),
+			enum: enums.BRAND,
 			required: true
 		},
 		description: {
@@ -31,6 +31,9 @@ const schema = new mongoose.Schema(
 		stock: {
 			type: Number,
 			required: true
+		},
+		image: {
+			type: String
 		},
 		reviews: [types.Review],
 		created_at: { type: Date, default: Date.now() },
