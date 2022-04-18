@@ -23,6 +23,7 @@ app.post(`/${apiRoot}/add`, makeExpressCallback(productController.postProduct));
 app.get(`/${apiRoot}/getAll`, makeExpressCallback(productController.getAllProducts));
 app.get(`/${apiRoot}`, makeExpressCallback(productController.filterProducts));
 app.get(`/${apiRoot}/:id`, makeExpressCallback(productController.getProduct));
+app.post(`/${apiRoot}/:id/addReview`, makeExpressCallback(productController.postReview));
 
 // Get port from environment and store in Express.
 var port = process.env.PRODUCTS_PORT;

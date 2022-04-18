@@ -8,5 +8,6 @@ export default class ProductInfo {
 		this.image = product.image;
 		this.price = product.price;
 		this.stock = product.stock;
+		this.reviews = product.reviews;
 	}
 }

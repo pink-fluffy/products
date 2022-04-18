@@ -16,6 +16,13 @@ class ProductDAO {
 
 		return createdProduct;
 	}
+
+	async addReview(review) {
+		// Create product in database
+		this.reviews.push(review);
+		this.save();
+		return this;
+	}
 }
 
 export default ProductDAO;

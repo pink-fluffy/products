@@ -4,7 +4,8 @@ export default function makeProductsDb({ makeDb, productModel }) {
 		insert,
 		findDuplicate,
 		findAll,
-		filter
+		filter,
+		addReview
 	});
 
 	async function insert(product) {
@@ -43,6 +44,13 @@ export default function makeProductsDb({ makeDb, productModel }) {
 	async function filter(query) {
 		const db = await makeDb();
 		const result = await productModel.find(query);
+		return result;
+	}
+
+	async function addReview(product_id, review) {
+		const db = await makeDb();
+		const product = await findByShortId(product_id);
+		const result = await product.addReview(review);
 		return result;
 	}
 }
