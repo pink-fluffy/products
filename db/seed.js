@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 
-fs.readFile('./products.json', 'utf8', (err, jsonString) => {
+fs.readFile('./productsff.json', 'utf8', (err, jsonString) => {
 	const data = JSON.parse(jsonString);
 	var products = data.products;
 	for (const product in products) {

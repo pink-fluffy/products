@@ -4,7 +4,7 @@ export default function makeFilterProducts({ productService, ProductInfo, Servic
 		const query = req.query;
 		const response = new ServiceResponse();
 		try {
-			if (!(query.category || query.brand || query.stock))
+			if (!(query.category || query.brand))
 				throw { status: enums.ERRORS.INVALID_INPUT.status, message: enums.ERRORS.INVALID_INPUT.message };
 			const products = await filter(query);
 			const resBody = new ServiceData(products.data, enums.REASON_PHRASES.OK);
